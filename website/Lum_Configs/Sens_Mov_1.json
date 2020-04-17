@@ -1,0 +1,7 @@
+{
+  "Dispositivo": "Sens_Mov_1",
+  "Cant_Luminarias": 2,
+  "Luminarias": {"L1": "Luminaria_8", "L2": "Luminaria_1"},
+  "Luminaria_8": "192.168.0.8",
+  "Luminaria_1": "192.168.0.9"
+}

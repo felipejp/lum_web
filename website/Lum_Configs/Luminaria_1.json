@@ -1,0 +1,22 @@
+{
+  "Dispositivo": "Luminaria_1",
+  "Modo_Manual": "NO",
+  "Modo_Automatico": "ESTADOS",
+  "Dimmer": "APAGADO",
+  "Luz_Defecto_Sin_Mov": "APAGADO",
+  "Luz_Con_Mov": "",
+  "Horas_Inicio_Estado_1": "4",
+  "Minutos_Inicio_Estado_1": "0",
+  "Horas_Inicio_Estado_2": "12",
+  "Minutos_Inicio_Estado_2": "30",
+  "Horas_Inicio_Estado_3": "15",
+  "Minutos_Inicio_Estado_3": "45",
+  "Estado_1_Reposo": "BAJO",
+  "Estado_1_Mov": "BAJO",
+  "Estado_2_Reposo": "MEDIO",
+  "Estado_2_Mov": "ALTO",
+  "Estado_3_Reposo": "ALTO",
+  "Estado_3_Mov": "ALTO",
+  "Tiempo_Luz_Mov": "10",
+  "server": "192.168.0.9"
+}

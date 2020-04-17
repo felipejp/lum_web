@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="utf-8">
+<!-- Comentario -->
+<script language="javascript" type="text/javascript" src="jquery.min.js"> </script>
+<script language="javascript" type="text/javascript" src="sketch.js"> </script>
+</head> 
+
+<style>
+h1 {
+  text-align: center;
+  font-family: "Bahnschrift SemiBold";
+}
+
+body {
+  background-image: url("iot-wallpaper 4.jpg");
+  background-size: 100% 100%;
+  background-attachment: fixed;
+}
+
+p {
+  color: black;
+  font-family: "Lucida Console";
+  font-weight: bold;
+  margin-left: 100px;
+}
+
+form {
+  color: black;
+  font-family: "Lucida Console";
+  font-weight: bold;
+  margin-left: 100px;
+}
+</style>
+
+<body>
+
+<h1>Luminarias Lumintel</h1>
+
+<p>
+Seleccione la luminaria a configurar
+<select id="elegir_luminaria" class="combo_elegir_lum">
+  <option id="titulo_luminarias"></option>
+  <option id="elegir_luminaria_1">Luminaria_1</option>
+  <option id="elegir_luminaria_2">Luminaria_5</option>
+  <option id="elegir_luminaria_2">Luminaria_8</option>
+  </select>
+ 
+  <button id="get_configuracion" disabled class="boton_1">Ver Configuración</button>
+  <button id="identificar" disabled class="boton_2">Identificar</button>
+</p>
+
+<p>
+Enviar nueva red WiFi
+<form>
+  <label for="ssid">SSID</label>
+  <input value="" id="ssid" disabled placeholder="SSID"/>
+
+  <label for="password">PASSWORD</label>
+  <input value="" type="password" id="password" disabled placeholder="PASSWORD"/>
+</form>
+<button id="wifi_config"> Enviar </button>
+
+</p>
+
+<br/>
+<br/>
+
+<p>
+Modo manual
+<select id="modo_manual" disabled>
+  <option id="titulo_modo_manual"></option>
+  <option id="modo_manual_si">SI</option>
+  <option id="modo_manual_no">NO</option>
+  </select>
+</p>
+<p>
+Modo automatico
+<select id="modo_automatico" disabled>
+  <option id="titulo_modo_automatico"></option>
+  <option id="modo_automatico_sensor">SENSOR</option>
+  <option id="modo_automatico_estados">ESTADOS</option>
+  </select>
+</p>
+
+<br/>
+<p id="selec_nivel_lum" hidden>
+Seleccione el nivel de luminosidad
+<p>
+<select id="estados_dimmer" hidden>
+  <option id="titulo_dimmer"></option>
+  <option id="dimmer_apagado">APAGADO</option>
+  <option id="dimmer_bajo">BAJO</option>
+  <option id="dimmer_medio">MEDIO</option>
+  <option id="dimmer_alto">ALTO</option>
+  </select>
+</p>
+</p>
+<p>
+<button id="submit_nivel_luminosidad" hidden>Enviar Configuración</button>
+</p>
+
+<p id="selec_luz_sin_mov_title" hidden>  
+ Seleccione el nivel de luz sin movimiento
+</p>
+<p> 
+  <select id="selec_luz_sin_mov" hidden>
+  <option id="titulo_selec_luz_sin_mov"></option>
+  <option id="dimmer_apagado_mov" value="APAGADO">APAGADO</option>
+  <option id="dimmer_bajo_mov" value="BAJO">BAJO</option>
+  <option id="dimmer_medio_mov" value="MEDIO">MEDIO</option>
+  <option id="dimmer_alto_mov" value="ALTO">ALTO</option>
+  </select>
+</p>
+<p id="selec_luz_con_mov_title" hidden>  
+Seleccione el nivel de luz con movimiento
+</p>
+<p>
+  <select id="selec_luz_con_mov" hidden>
+  <option id="titulo_selec_luz_con_mov"></option>
+  <option id="dimmer_bajo_mov_no">BAJO</option>
+  <option id="dimmer_medio_mov_no">MEDIO</option>
+  <option id="dimmer_alto_mov_no">ALTO</option>
+  </select>
+</p>  
+<p id="tiempo_encendido_title_1" hidden>
+Tiempo de encendido [segs]
+  <textarea id="tiempo_encendido" rows="1" cols="2"></textarea>
+</p>
+<p>
+<button id="submit_sens_mov" hidden>Enviar Configuración</button>
+</p>
+
+<p id="selec_inicio_E1" hidden>
+Horario de Inicio de Estado 1 hh:mm
+
+<select id="hora_inicio_estado_1" hidden>
+  <option id="horas_1_vacio"></option>
+  <option id="horas_1_0">0</option>
+  <option id="horas_1_1">1</option>
+  <option id="horas_1_2">2</option>
+  <option id="horas_1_3">3</option>
+  <option id="horas_1_4">4</option>
+  <option id="horas_1_5">5</option>
+  <option id="horas_1_6">6</option>
+  <option id="horas_1_7">7</option>
+  <option id="horas_1_8">8</option>
+  <option id="horas_1_9">9</option>
+  <option id="horas_1_10">10</option>
+  <option id="horas_1_11">11</option>
+  <option id="horas_1_12">12</option>
+  <option id="horas_1_13">13</option>
+  <option id="horas_1_14">14</option>
+  <option id="horas_1_15">15</option>
+  <option id="horas_1_16">16</option>
+  <option id="horas_1_17">17</option>
+  <option id="horas_1_18">18</option>
+  <option id="horas_1_19">19</option>
+  <option id="horas_1_20">20</option>
+  <option id="horas_1_21">21</option>
+  <option id="horas_1_22">22</option>
+  <option id="horas_1_23">23</option>
+  </select>
+  
+  <select id="minutos_inicio_estado_1" hidden>
+  <option id="minutos_1_vacio"></option>
+  <option id="minutos_1_0">0</option>
+  <option id="minutos_1_15">15</option>
+  <option id="minutos_1_30">30</option>
+  <option id="minutos_1_45">45</option>
+  </select>
+</p>
+
+<p id="E1_reposo_movimiento" hidden>
+  Estado 1 - Reposo 
+  <select id="estado_1_reposo" hidden>
+  <option id="titulo_estado_1_reposo"></option>
+  <option id="estado_1_reposo_apagado">APAGADO</option>
+  <option id="estado_1_reposo_bajo">BAJO</option>
+  <option id="estado_1_reposo_medio">MEDIO</option>
+  <option id="estado_1_reposo_alto">ALTO</option>
+  </select>
+  Estado 1 - Movimiento
+  <select id="estado_1_mov" hidden>
+  <option id="titulo_estado_1_mov"></option>
+  <option id="estado_1_mov_apagado">APAGADO</option>
+  <option id="estado_1_mov_bajo">BAJO</option>
+  <option id="estado_1_mov_medio">MEDIO</option>
+  <option id="estado_1_mov_alto">ALTO</option>
+  </select>
+</p>
+
+</br>
+  
+<p  id="selec_inicio_E2" hidden>
+  Horario de Inicio de Estado 2 hh:mm
+  
+  <select id="hora_inicio_estado_2" hidden>
+  <option id="horas_2_vacio"></option>
+  <option id="horas_2_0">0</option>
+  <option id="horas_2_1">1</option>
+  <option id="horas_2_2">2</option>
+  <option id="horas_2_3">3</option>
+  <option id="horas_2_4">4</option>
+  <option id="horas_2_5">5</option>
+  <option id="horas_2_6">6</option>
+  <option id="horas_2_7">7</option>
+  <option id="horas_2_8">8</option>
+  <option id="horas_2_9">9</option>
+  <option id="horas_2_10">10</option>
+  <option id="horas_2_11">11</option>
+  <option id="horas_2_12">12</option>
+  <option id="horas_2_13">13</option>
+  <option id="horas_2_14">14</option>
+  <option id="horas_2_15">15</option>
+  <option id="horas_2_16">16</option>
+  <option id="horas_2_17">17</option>
+  <option id="horas_2_18">18</option>
+  <option id="horas_2_19">19</option>
+  <option id="horas_2_20">20</option>
+  <option id="horas_2_21">21</option>
+  <option id="horas_2_22">22</option>
+  <option id="horas_2_23">23</option>
+  </select>
+  
+  <select id="minutos_inicio_estado_2" hidden>
+  <option id="minutos_2_vacio"></option>
+  <option id="minutos_2_0">0</option>
+  <option id="minutos_2_15">15</option>
+  <option id="minutos_2_30">30</option>
+  <option id="minutos_2_45">45</option>
+  </select>
+  </p>
+  
+<p id="E2_reposo_movimiento" hidden>
+  Estado 2 - Reposo
+  <select id="estado_2_reposo" hidden>
+  <option id="titulo_estado_2_reposo"></option>
+  <option id="estado_2_reposo_apagado">APAGADO</option>
+  <option id="estado_2_reposo_bajo">BAJO</option>
+  <option id="estado_2_reposo_medio">MEDIO</option>
+  <option id="estado_2_reposo_alto">ALTO</option>
+  </select>
+  Estado 2 - Movimiento
+  <select id="estado_2_mov" hidden>
+  <option id="titulo_estado_2_mov"></option>
+  <option id="estado_2_mov_apagado">APAGADO</option>
+  <option id="estado_2_mov_bajo">BAJO</option>
+  <option id="estado_2_mov_medio">MEDIO</option>
+  <option id="estado_2_mov_alto">ALTO</option>
+  </select>
+</p>
+
+</br>
+
+<p id="selec_inicio_E3" hidden>
+  Horario de Inicio de Estado 3 hh:mm
+
+  <select id="hora_inicio_estado_3" hidden>
+  <option id="horas_3_vacio"></option>
+  <option id="horas_3_0">0</option>
+  <option id="horas_3_1">1</option>
+  <option id="horas_3_2">2</option>
+  <option id="horas_3_3">3</option>
+  <option id="horas_3_4">4</option>
+  <option id="horas_3_5">5</option>
+  <option id="horas_3_6">6</option>
+  <option id="horas_3_7">7</option>
+  <option id="horas_3_8">8</option>
+  <option id="horas_3_9">9</option>
+  <option id="horas_3_10">10</option>
+  <option id="horas_3_11">11</option>
+  <option id="horas_3_12">12</option>
+  <option id="horas_3_13">13</option>
+  <option id="horas_3_14">14</option>
+  <option id="horas_3_15">15</option>
+  <option id="horas_3_16">16</option>
+  <option id="horas_3_17">17</option>
+  <option id="horas_3_18">18</option>
+  <option id="horas_3_19">19</option>
+  <option id="horas_3_20">20</option>
+  <option id="horas_3_21">21</option>
+  <option id="horas_3_22">22</option>
+  <option id="horas_3_23">23</option>
+  </select>
+  
+  <select id="minutos_inicio_estado_3" hidden>
+  <option id="minutos_3_vacio"></option>
+  <option id="minutos_3_0">0</option>
+  <option id="minutos_3_15">15</option>
+  <option id="minutos_3_30">30</option>
+  <option id="minutos_3_45">45</option>
+  </select>
+</p>
+  
+<p  id="E3_reposo_movimiento" hidden>
+  Estado 3 - Reposo
+  <select id="estado_3_reposo" hidden>
+  <option id="titulo_estado_3_reposo"></option>
+  <option id="estado_3_reposo_apagado">APAGADO</option>
+  <option id="estado_3_reposo_bajo">BAJO</option>
+  <option id="estado_3_reposo_medio">MEDIO</option>
+  <option id="estado_3_reposo_alto">ALTO</option>
+  </select>
+  Estado 3 - Movimiento
+  <select id="estado_3_mov" hidden>
+  <option id="titulo_estado_3_mov"></option>
+  <option id="estado_3_mov_apagado">APAGADO</option>
+  <option id="estado_3_mov_bajo">BAJO</option>
+  <option id="estado_3_mov_medio">MEDIO</option>
+  <option id="estado_3_mov_alto">ALTO</option>
+  </select>
+</p>
+
+<br/>
+  
+<p id="tiempo_encendido_title_2" hidden>
+  Tiempo de encendido [segs]
+  <textarea id="tiempo_encendido_2" rows="1" cols="2"></textarea>
+</p>
+<p>
+<button id="submit_config_estados" hidden>Enviar Configuración</button>
+</p>
+
+</body>
+
+</html>
